@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
 class CardAlumno extends Component{
     constructor(props){
@@ -13,7 +14,7 @@ class CardAlumno extends Component{
             <div className="col-md-4">
                 <div className="card">
                     <div className="card-header bg-dark text-white">
-                        <h2>{this.state.alumno.nombre}</h2>
+                        <h2 onClick={()=> this.props.redirect(this.state.alumno._id)}>{this.state.alumno.nombre}</h2>
                     </div>
                     <div className="card-body">
                         <label htmlFor="">{this.state.alumno.carrera}</label><br/>

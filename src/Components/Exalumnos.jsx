@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import CardAlumno from './CardAlumno';
+import {Link} from 'react-router-dom';
 
 class Exalumnos extends Component{
     constructor(props){
@@ -28,12 +29,16 @@ class Exalumnos extends Component{
         .catch(err => console.log(err))
 
     }
+    
+    redirect = (id) => {
+        this.props.history.push(`/Exalumno/${id}`)
+    }
 
     renderExalumnos(){
         if(this.state.Exalumnos.length !== 0){
             const exalumno = this.state.Exalumnos.map((alumno,index) =>{
                 return(
-                    <CardAlumno alumno={alumno}/>
+                    <CardAlumno alumno={alumno} redirect={this.redirect}/>
                 )
             })
             return exalumno
@@ -78,6 +83,7 @@ class Exalumnos extends Component{
                 <div>
                     <div className="row justify-content-center">
                         <div className="col-md-4">
+                            <Link to='/prueba'><button className="btn btn-warning">Mandar a prueba</button></Link>
                             <h3>Registrar un nuevo exalumno</h3>
                             <form onSubmit={this.onFormSubmit}>
                                 <div className="form-group">
